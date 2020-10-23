@@ -1,0 +1,71 @@
+{% extends 'manuscriptpages/home.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<style>
+  div.inputinfo{
+  border:double 2px black ;
+  width: 100%; 
+  padding-left: 80px;
+  padding-top: 20px;
+  }
+  div input{
+margin: 10px;
+width: 400px;
+height: 50px;
+border-radius: 10px;
+  }
+</style>
+
+<div class="inputinfo" style="margin-left: 200px; ">
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form|crispy}}
+  <table>
+    <td><a class="btn btn-primary btn-sm" href="{% url 'step1' %}">Prev</a></td>
+    <td><button class="btn btn-primary btn-sm" type="submit">Next</button></td>
+  </table>
+</form>
+</div>
+
+
+
+
+
+
+{% endblock content %}
+
+  <!-- <h2>Books</h2>
+<table>
+<thead>
+<th>Title</th>
+<th>Author</th>
+<th>Book</th>
+<th>Delete</th>
+</thead>
+{% for upload in uploads %}
+<tbody>
+  <tr>
+    <td>{{ upload.title }} </td>
+    <td> {{ upload.author }}</td>
+    <td><a href="{{ upload.book.url }}" class="btn btn-primary btn-sm" target="_blank">Download</a></td>
+
+  <td>
+
+<form  method="POST" action="{% url 'delete_upload' upload.pk %}">
+{% csrf_token %}
+<button type="submit" class="btn btn-danger btn-sm">Delete</button>
+</form>
+
+  </td>
+  </tr>
+  {% endfor %}>
+</tbody>
+  </table> -->
+  
+
+
+
+

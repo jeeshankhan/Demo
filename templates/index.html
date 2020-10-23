@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>Chemical Science</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href=" {% static 'layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+
+
+<style>
+
+ .search-container {
+    float: right;
+  }
+  
+  
+  
+  .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-container button:hover {
+    background: #ccc;
+  }
+  
+  
+
+  
+    .search-container button {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+
+</style>
+
+</head>
+<body id="top">
+
+<div class="wrapper row0">
+  <div id="topbar" class="hoc clear"> 
+    
+    <div class="fl_left">
+      <ul class="nospace">
+        <li><a href="{% url 'home1' %}"><i class="fas fa-home fa-lg"></i></a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+
+        {% if request.user.is_authenticated %}
+        <li> Hellow, {{request.user.username}}</li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'regs' %}">Register</a></li>
+        {% endif %}
+
+      </ul>
+    </div>
+
+    <div class="fl_right">
+      <ul class="nospace">
+        <li><i class="fas fa-phone rgtspace-5"></i> +91 9761611918</li>
+        <li><i class="fas fa-envelope rgtspace-5"></i> info@domain.com</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="wrapper row1">
+  <header id="header" class="hoc clear"> 
+    
+    <div id="logo" class="one_quarter first">
+      <h1><a href="{% url 'home1' %}">Chemical Science Journal</a></h1>
+      <p>Anish Khan</p>
+    </div>
+    <div class="one_quarter"><strong><i class="fas fa-phone rgtspace-5"></i> Call Us:</strong> +91 9761611918</div>
+    <div class="one_quarter"><strong><i class="far fa-clock rgtspace-5"></i> Mon. - Sat.:</strong> 08.00am - 18.00pm</div>
+    <div class="search-container">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    
+    <!-- <div class="one_quarter">
+      <form action="#" method="post">
+        <input  style="width:80%;  height:30%"  type="text" placeholder="Search.."> <button  style="width: 100%;; margin-top:0% height:fit-content" type="submit">Submit</button>
+      </form>
+    </div> -->
+
+  </header>
+</div>
+
+
+
+
+<div class="wrapper row2">
+  <nav id="mainav" class="hoc clear"> 
+    
+    <ul class="clear">
+      <li 
+       {% if '/' == request.path %} 
+       class="active"
+       {% else %}
+       class="#"
+       {% endif %}
+       >
+       <a href="{% url 'home1' %}">Home</a></li>
+
+      <li 
+      {% if 'editorialboard' in request.path %} 
+      class="active"
+      {% else %}
+      class="#"
+      {% endif %}
+        >
+
+        <a class="#" href="{% url 'editorialboard' %}">Editorial Board</a>
+      <li><a class="#" href="{% url 'home' %}">Submit Manuscript</a>
+      </li>
+      <li><a href="{% url 'authorGuidelines' %}">Author Guidelines</a></li>
+      <li><a href="{% url 'archives' %}">Archives</a></li>
+      <li><a href="{% url 'currentIssue' %}">Current Issue</a></li>
+      <li><a href="{% url 'help' %}">Help</a></li>
+    </ul>
+
+  </nav>
+</div>
+<style type="text/css">
+  .con{
+min-height: 100vh;
+height: 100%;
+  }
+</style>
+
+<div class="con">
+{% block content %}
+
+
+
+
+{% endblock %}
+</div>
+
+
+
+
+
+
+
+
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear">
+
+    <div class="one_quarter first">
+      <h6 class="heading">Nulla ullamcorper</h6>
+      <ul class="nospace btmspace-30 linklist contact">
+        <li><i class="fas fa-map-marker-alt"></i>
+          <address>
+            Street Name &amp; Number, Town, Postcode/Zip
+          </address>
+        </li>
+        <li><i class="fas fa-phone"></i> +00 (123) 456 7890</li>
+        <li><i class="far fa-envelope"></i> info@domain.com</li>
+      </ul>
+      <ul class="faico clear">
+        <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+        <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a class="faicon-dribble" href="#"><i class="fab fa-dribbble"></i></a></li>
+        <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">index one</h6>
+      <ul class="nospace linklist">
+        <li><a href="#">link one</a></li>
+        <li><a href="#">link two</a></li>
+        <li><a href="#">link three</a></li>
+        
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">index one</h6>
+      <ul class="nospace linklist">
+        <li><a href="#">link one</a></li>
+        <li><a href="#">link two</a></li>
+        <li><a href="#">link three</a></li>
+        
+      </ul>
+    </div>
+    <h6 class="heading">index one</h6>
+      <ul class="nospace linklist">
+        <li><a href="#">link one</a></li>
+        <li><a href="#">link two</a></li>
+        <li><a href="#">link three</a></li>
+        
+      </ul>
+      
+      <form method="post" action="#">
+        <fieldset>
+          <legend>Newsletter:</legend>
+          <input class="btmspace-15" type="text" value="" placeholder="Name">
+          <input class="btmspace-15" type="text" value="" placeholder="Email">
+          <button type="submit" value="submit">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+  </footer>
+</div>
+
+
+
+
+
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear">
+    
+    <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
+        title="Free Website Templates">OS Templates</a></p>
+  </div>
+</div>
+
+
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+
+
+<!-- JAVASCRIPTS -->
+<script src="{% static 'layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'layout/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'layout/scripts/jquery.mobilemenu.js' %}"></script>
+
+</body>
+</html>

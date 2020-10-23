@@ -1,0 +1,35 @@
+{% extends 'manuscriptpages/home.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+
+<style>
+  div.inputinfo{
+  border:double 2px black ;
+  width: 100%; 
+  padding-left: 80px;
+  padding-top: 20px;
+  }
+  div input{
+margin: 10px;
+width: 400px;
+height: 50px;
+border-radius: 10px;
+  }
+</style>
+
+<div class="inputinfo" style="margin-left: 200px; ">
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{formmanuscript|crispy}}
+  <table>
+    <td><a class="btn btn-primary btn-sm" href="{% url 'step6' %}">Prev</a></td>
+    <td><button class="btn btn-primary btn-sm" type="submit">Next</button></td>
+  </table>
+</form>
+</div>
+
+{% endblock content %}

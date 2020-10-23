@@ -1,0 +1,129 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<html>
+<head>
+
+<!-- <style>
+* {
+    box-sizing:border-box;
+}
+
+.box {
+ 
+  width: 20%;
+  margin-left: 500px;
+  
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style> -->
+
+
+
+<style>
+
+  .form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+  }
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+
+</style>
+
+
+</head>
+
+<form class="form-signin" method="post">
+  {% csrf_token %}
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+  <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required >
+
+  <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+
+    {% for field  in login_form  %}
+<p style="color: red;">
+{% for error in field.errors %}
+    <p style="color:red">{{error}}</p>
+    {% endfor %}
+</p>
+    {% endfor %}
+
+{% if login_form.non_field_errors %}
+<p style="color:red;">{{login_form.non_field_errors}}</p>
+{% endif %}
+
+<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form> 
+<hr>
+<hr>
+
+
+ <!-- <h1 style="text-align: center; margin-top:20px">
+    :::::::::::::::::::::::::::::::::User LOGIN::::::::::::::::::::::::::::::::
+</h1>
+<div class="clearfix" style="opacity: 0.9; border:red line 2px;">
+<form method="post">
+  {% csrf_token %}
+
+    {% for field in login_form %}
+    <div class="box">
+    
+        {{field.label_tag}}
+        {{field}}
+
+        {% if field.help_text %}
+        <small style="color:darkred; margin-left:500px;"> {{ field.help_text }} </small>
+        {% endif %}
+    </div>
+        {% endfor %}
+
+        {% for field  in login_form  %}
+        {% for error in field.errors %}
+        <p style="color:rgb(255, 0, 128); margin-left:500px;" >{{error}}</p>
+        {% endfor %}
+        {% endfor %}
+
+{% if login_form.non_field_errors %}
+
+<p style="color: red; margin-left:500px;">
+    {{login_form.non_field_errors}}
+</p>
+{% endif %}
+    
+    <button type="submit" style="width: 7%; margin-bottom:50px;margin-left:500px; margin-top:20px; height:30px;color:darkslategray">LogIn</button>
+</form>
+
+
+</div>  -->
+{% endblock content %}
