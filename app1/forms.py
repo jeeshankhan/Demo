@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,authenticate
-from  .models import Account,upload,manuscript_detail,manuscript_info,manuscript_attached_reviewer,manuscript_attached_editor,manuscript_attached_author,file_upload
+from  .models import Account,upload,manuscript_detail,manuscript_info,manuscript_attached_reviewer,manuscript_attached_editor,manuscript_attached_author,file_upload,manuscript_upload
 
 from django.db import models
 from django.forms import ModelForm
@@ -100,6 +100,10 @@ class manuscript_info_form(forms.ModelForm):
     class Meta:
         model = manuscript_info
         fields =('manuscript_key','number_of_figures','number_of_color_figures','number_of_tables','number_of_words',)
-    
+
+
+class manuscript_upload_form(forms.ModelForm):
+    class Meta:
+        fields = ('email','upload_file',) 
     
 

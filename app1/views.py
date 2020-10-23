@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import login ,authenticate,logout
-from .forms import RegistrationForm ,AccountAuthenticationForm,example,upload_form,upload_form1,manuscript_detail_form
+from .forms import RegistrationForm ,AccountAuthenticationForm,example,upload_form,upload_form1,manuscript_detail_form,manuscript_upload_form
 from .forms import file_upload_form,manuscript_attached_author_form,manuscript_attached_editor_form,manuscript_attached_reviewer_form,manuscript_info_form
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
@@ -24,6 +24,7 @@ def manu(request):
 ###########--------Main menu views -----{{{{{{{{{[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]}}}}}}}}}
 def home1(request):
     return render(request,'pages/home1.html')
+    
 def index(request):
     return render(request,'index.html')
 def archives(request):
@@ -267,6 +268,20 @@ def step8(request):
 
 
 
+def manuscript_upload_view(request):
+    if request.method == 'POST':
+        form = manuscript_upload_form(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('author')
+    else:
+        form = manuscript_upload_form()
+    return render(request,'manuscriptpages/manuscripyt_upload.html',{'form':form})
+
+
+
+
+
 #+++++++++++++++++++==========file uploads steps================___----
 
 # def step1(request):
@@ -327,3 +342,4 @@ def publisher(request):
 
 def reviewer(request):
     return render(request,'account/reviewer.html')
+

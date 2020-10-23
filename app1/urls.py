@@ -42,10 +42,12 @@ urlpatterns = [
     path('step6',views.step6,name='step6'),
     path('step7',views.step7,name='step7'),
     path('step8',views.step8,name='step8'),
+    path('manuscriptupload',views.manuscript_upload_view,'manuscriptupload'),
     # path('book/<int:pk>/',views.delete_upload,name='delete_upload'),
 
 
     #######--------Home Of Users views---------{{{{]]]]]]]]]{{{{]=======++________-----==}}}}}}}}
+
     path('home',views.home,name='home'),
     path('author',views.author,name='author'),
     path('editor',views.editor,name='editor'),
