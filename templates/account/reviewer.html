@@ -1,4 +1,24 @@
 {% extends 'index2.html'%}
 
 {% block content %}
+
+  <h2>Books</h2>
+<table>
+<thead>
+<th>manuscript key</th>
+<th>User Email</th>
+<th>File</th>
+
+</thead>
+{% for f in pdfs %}
+<tbody>
+  <tr>
+    <td>{{ f.manuscript_key }} </td>
+    <td> {{ f.your_email }}</td>
+    <td><a href="{{ f.ubload_file.url }}" class="btn btn-primary btn-sm" target="_blank">Download</a></td>
+  </tr>
+
+  {% endfor %}>
+</tbody>
+  </table> 
 {% endblock content %}

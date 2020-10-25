@@ -17,19 +17,28 @@
     
     <div class="fl_left">
       <ul class="nospace">
-        <li><a href="{% url 'home' %}"><i class="fas fa-home fa-lg"></i></a></li>
-        <li><a href="{% url 'author' %}">Author</a></li>
-        <li><a href="{% url 'reviewer' %}">Reviewer</a></li>
-        <li><a href="{% url 'editor' %}">Editor</a></li>
-        <li><a href="{% url 'publisher' %}">Publisher</a></li>
+        
+        
+       
+        
 
         {% if request.user.is_authenticated %}
-        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><a href="{% url 'home' %}"><i class="fas fa-home fa-lg"></i></a></li>
+        <li><a href="{% url 'author' %}">Author</a></li>
+       
         <li> Hellow, {{request.user.username}}</li>
+        {% if request.user.is_publisher %}
+        <li><a href="{% url 'publisher' %}">Publisher</a></li>
+        {% endif %}
+        {% if request.user.is_reviewer %}
+        <li><a href="{% url 'reviewer' %}">Reviewer</a></li>
+        {% endif %}
+        
+        {% if request.user.is_editor %}
+        <li><a href="{% url 'editor' %}">Reviewer</a></li>
+        {% endif %}
 
-        {% else %}
-        <li><a href="{% url 'login' %}">Login</a></li>
-        <li><a href="{% url 'regs' %}">Register</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
         {% endif %}
       </ul>
     </div>

@@ -10,7 +10,7 @@ from .forms import dockuploadform
 from .forms import UserCreationForm
 from django.conf import settings
 from django.conf.urls.static import static
-from .models import upload,manuscript_detail
+from .models import upload,manuscript_detail,dockupload
 import datetime
 import os
 import io
@@ -394,5 +394,7 @@ def publisher(request):
     return render(request,'account/publisher.html')
 
 def reviewer(request):
-    return render(request,'account/reviewer.html')
+    pdfs = dockupload.objects.all()
+
+    return render(request,'account/reviewer.html',{'pdfs':pdfs})
 
