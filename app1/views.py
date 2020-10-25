@@ -268,15 +268,15 @@ def step8(request):
 
 
 
-def manuscript_upload_view(request):
-    if request.method == 'POST':
-        form = manuscript_upload_form(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('author')
-    else:
-        form = manuscript_upload_form()
-    return render(request,'manuscriptpages/manuscripyt_upload.html',{'form':form})
+# def manuscript_upload_view(request):
+#     if request.method =='POST':
+#         form = manuscript_upload_form(request.POST,request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect('author')
+#     else:
+#         form = manuscript_upload_form()
+#     return render(request,'manuscriptpages/manuscript_upload.html',{'form':form})
 
 
 
@@ -303,11 +303,11 @@ def manuscript_upload_view(request):
 
 
 # ################# pdf file deletion def --------------{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}
-def delete_upload(request,pk):
-    if request.method =='POST':
-        book  = upload.objects.get(pk=pk) 
-        book.delete()
-    return redirect('step2')
+# def delete_upload(request,pk):
+#     if request.method =='POST':
+#         book  = upload.objects.get(pk=pk) 
+#         book.delete()
+#     return redirect('step2')
 
 
 

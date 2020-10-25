@@ -122,9 +122,9 @@ class upload(models.Model):
     def __str__(self):
         return self.title
 
-    def delete(self, *args, **kwargs):
-         self.book.delete()
-         super().delete(*args,**kwargs)
+    # def delete(self, *args, **kwargs):
+    #      self.book.delete()
+    #      super().delete(*args,**kwargs)
 
 
 TYPE_CHOICES = [
@@ -148,7 +148,7 @@ class manuscript_detail(models.Model):
     keyword             = models.CharField(max_length=300,blank=True,null=True)
     cover_letter        = models.FileField(upload_to='pdf/cover_letter/%y/%m/%d')
     def __str__(self):
-        return self.manuscript_key
+        return self.Type_choices
 class file_upload(models.Model):
     manuscript_key = models.CharField(max_length=100,blank=True,null=True)
     file_to_upload1 = models.FileField(verbose_name='file_one',upload_to='pdf/articlefile1/%y/%m/%d')
@@ -204,8 +204,7 @@ class manuscript_info(models.Model):
 class manuscript_upload(models.Model):
     your_email = models.EmailField(max_length=254)
     upload_file = models.FileField(upload_to='article/')
-    def __str__(self):
-        return self.your_email
+
 
 
 

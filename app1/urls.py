@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 
 
 
+
 urlpatterns = [
 
     # path('home',views.script,name='script'),
@@ -22,6 +23,7 @@ urlpatterns = [
 
 
 #######-----------Main Menu---------]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
     path('',views.home1,name='home1'),
     path('archives',views.archives,name='archives'),
     path('authorGuidelines',views.authorGuidelines,name='authorGuidelines'),
@@ -29,7 +31,7 @@ urlpatterns = [
     path('currentIssue',views.currentIssue,name='currentIssue'),
     path('help',views.help,name='help'),
     # path('submitmanuscript',views.submitmanuscript,name='submitmanuscript'),
-    path('step10',views.example_view,name=''),
+    path('step10',views.example_view,name='step10'),
 
 
 #######---------ManuScript----------]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]][[[[[[[[[[[[[[
@@ -42,7 +44,7 @@ urlpatterns = [
     path('step6',views.step6,name='step6'),
     path('step7',views.step7,name='step7'),
     path('step8',views.step8,name='step8'),
-    path('manuscriptupload',views.manuscript_upload_view,'manuscriptupload'),
+    # path('manuscript_upload',views.manuscript_upload_view,'manuscript_upload'),
     # path('book/<int:pk>/',views.delete_upload,name='delete_upload'),
 
 

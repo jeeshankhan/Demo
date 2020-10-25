@@ -16,7 +16,6 @@
   }
   
   
-  
   .search-container button {
     float: right;
     padding: 6px 10px;
@@ -54,7 +53,8 @@
     
     <div class="fl_left">
       <ul class="nospace">
-        <li><a href="{% url 'home1' %}"><i class="fas fa-home fa-lg"></i></a></li>
+         <li><a href="{% url 'home1' %}"> <i class="fas fa-home fa-lg"></i> </a></li>  
+        
         <li><a href="{% url 'about' %}">About</a></li>
         <li><a href="{% url 'contact' %}">Contact</a></li>
 
@@ -88,7 +88,7 @@
   <header id="header" class="hoc clear"> 
     
     <div id="logo" class="one_quarter first">
-      <h1><a href="{% url 'home1' %}">Chemical Science Journal</a></h1>
+      <h1><a href="{% url 'index' %}">Chemical Science Journal</a></h1>
       <p>Anish Khan</p>
     </div>
     <div class="one_quarter"><strong><i class="fas fa-phone rgtspace-5"></i> Call Us:</strong> +91 9761611918</div>
@@ -116,26 +116,9 @@
   <nav id="mainav" class="hoc clear"> 
     
     <ul class="clear">
-      <li 
-       {% if '/' == request.path %} 
-       class="active"
-       {% else %}
-       class="#"
-       {% endif %}
-       >
-       <a href="{% url 'home1' %}">Home</a></li>
-
-      <li 
-      {% if 'editorialboard' in request.path %} 
-      class="active"
-      {% else %}
-      class="#"
-      {% endif %}
-        >
-
-        <a class="#" href="{% url 'editorialboard' %}">Editorial Board</a>
-      <li><a class="#" href="{% url 'home' %}">Submit Manuscript</a>
-      </li>
+    
+       <li><a class="#" href="{% url 'editorialboard' %}">Editorial Board</a></li> 
+      <li><a class="#" href="{% url 'home' %}">Submit Manuscript</a> </li>
       <li><a href="{% url 'authorGuidelines' %}">Author Guidelines</a></li>
       <li><a href="{% url 'archives' %}">Archives</a></li>
       <li><a href="{% url 'currentIssue' %}">Current Issue</a></li>
