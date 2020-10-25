@@ -1,5 +1,6 @@
-{% extends 'manuscriptpages/home.html' %}
+{% extends 'index2.html' %}
 {% load crispy_forms_tags %}
+
 {% block content %}
 <style>
   div.inputinfo{
@@ -27,9 +28,9 @@ border-radius: 10px;
 </div>
 
 
+<!-- 
 
-</div>
-<!-- <div id="Paris" class="tabcontent">
+<div id="Paris" class="tabcontent">
   <div>
     <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
       <table>

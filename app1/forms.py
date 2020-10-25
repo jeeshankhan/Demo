@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,authenticate
 from  .models import Account,upload,manuscript_detail,manuscript_info,manuscript_attached_reviewer,manuscript_attached_editor,manuscript_attached_author,file_upload,manuscript_upload
-
+from .models import dockupload
 from django.db import models
 from django.forms import ModelForm
+from datetime import date,time
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=254,help_text='Email Required ')
@@ -105,5 +106,11 @@ class manuscript_info_form(forms.ModelForm):
 class manuscript_upload_form(forms.ModelForm):
     class Meta:
         fields = ('email','upload_file',) 
+class dockuploadform(forms.ModelForm):
+   
+    class Meta:
+        model = dockupload
+        fields = ('your_email','ubload_file')
+
     
 

@@ -6,15 +6,21 @@ from django.contrib.auth import login ,authenticate,logout
 from .forms import RegistrationForm ,AccountAuthenticationForm,example,upload_form,upload_form1,manuscript_detail_form,manuscript_upload_form
 from .forms import file_upload_form,manuscript_attached_author_form,manuscript_attached_editor_form,manuscript_attached_reviewer_form,manuscript_info_form
 from django.core.files.storage import FileSystemStorage
+from .forms import dockuploadform
+from .forms import UserCreationForm
 from django.conf import settings
 from django.conf.urls.static import static
 from .models import upload,manuscript_detail
 import datetime
 import os
+import io
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
 
 def manu(request):
     return render(request,'menuscriptpages/manuscript.html')
-
 
 
 
@@ -264,20 +270,67 @@ def step8(request):
     if request.method =='POST':
         return HttpResponseRedirect('step1')
     return render(request,'manuscriptpages/step8.html')
+def manuscriptpdf(request):
+    return render(request,'manuscriptpages/manuscriptpdf.html')
+
+def  dockuploadview(request):
+    x = datetime.datetime.now()
+    h = x.hour
+    m= x.minute
+    s = x.second
+    ms = x.microsecond 
+    key = 'key-'+str(h)+str(m)+str(s)+str(ms)
+    request.session['f'] = key
+    if request.method == 'POST':
+        form = dockuploadform(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('manuscriptpdf')
+    else:
+        form= dockuploadform()
+    return render(request,'manuscriptpages/dockupload.html',{'form':form})
+
+def pdfprint(request):
+    # Create a file-like buffer to receive PDF data.
+    buffer = io.BytesIO()
+
+    # Create the PDF object, using the buffer as its "file."
+    p = canvas.Canvas(buffer)
+
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
 
 
 
+    #canvas = canvas.Canvas("form.pdf", pagesize=letter)
+    p.setLineWidth(.3)
+    p.setFont('Helvetica', 12)
 
-# def manuscript_upload_view(request):
-#     if request.method =='POST':
-#         form = manuscript_upload_form(request.POST,request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return HttpResponseRedirect('author')
-#     else:
-#         form = manuscript_upload_form()
-#     return render(request,'manuscriptpages/manuscript_upload.html',{'form':form})
+    p.drawString(30,750,'Chemistry Journal')
+    p.drawString(30,735,'key')
+    p.drawString(500,750,request.session['f'])
+    p.line(480,747,580,747)
 
+    p.drawString(275,725,'year:')
+    p.drawString(500,725,"2020")
+    p.line(378,723,580,723)
+
+    p.drawString(30,703,'USER:')
+    p.line(120,700,580,700)
+    p.drawString(120,703,"Jeeshan khan")
+
+   
+
+
+
+    # Close the PDF object cleanly, and we're done.
+    p.showPage()
+    p.save()
+
+    # FileResponse sets the Content-Disposition header so that browsers
+    # present the option to save the file.
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename='info.pdf')
 
 
 

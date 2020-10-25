@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
-from datetime import date,datetime
+import  datetime
 
 # Create your models here.
 # class Registration(models.Model):
@@ -143,7 +143,7 @@ class manuscript_detail(models.Model):
     title               = models.CharField(max_length=200)
     running_head        = models.CharField(max_length=200)
     abstract            = models.TextField(max_length=500)
-    upload_date         = models.DateField(default=datetime.today)
+    upload_date         = models.DateField(default=datetime.datetime.now())
     upload_by           = models.EmailField(max_length=254)
     keyword             = models.CharField(max_length=300,blank=True,null=True)
     cover_letter        = models.FileField(upload_to='pdf/cover_letter/%y/%m/%d')
@@ -204,8 +204,18 @@ class manuscript_info(models.Model):
 class manuscript_upload(models.Model):
     your_email = models.EmailField(max_length=254)
     upload_file = models.FileField(upload_to='article/')
-
-
+class dockupload(models.Model):
+    x = datetime.datetime.now()
+    h = x.hour
+    m= x.minute
+    s = x.second
+    ms = x.microsecond 
+    key = 'key-'+str(h)+str(m)+str(s)+str(ms)
+    manuscript_key = models.CharField(max_length=300,default=key,blank=True,null=True)
+    your_email = models.EmailField(max_length=254)
+    ubload_file =models.FileField(upload_to='dock/article')
+    def __str__(self):
+        return self.manuscript_key
 
 
 

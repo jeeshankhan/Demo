@@ -14,7 +14,7 @@ urlpatterns = [
 
 
 #####3--------Account----------------[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
-    path('index',views.index,name='index'),
+    #path('index',views.index,name='index'),
     path('about',views.about,name='about'),
     path('regs',views.registration_view,name='regs'),
     path('login',views.login_view,name='login'),
@@ -30,7 +30,7 @@ urlpatterns = [
     path('editorialboard',views.editorialboard,name='editorialboard'),
     path('currentIssue',views.currentIssue,name='currentIssue'),
     path('help',views.help,name='help'),
-    # path('submitmanuscript',views.submitmanuscript,name='submitmanuscript'),
+    #path('submitmanuscript',views.submitmanuscript,name='submitmanuscript'),
     path('step10',views.example_view,name='step10'),
 
 
@@ -44,8 +44,10 @@ urlpatterns = [
     path('step6',views.step6,name='step6'),
     path('step7',views.step7,name='step7'),
     path('step8',views.step8,name='step8'),
-    # path('manuscript_upload',views.manuscript_upload_view,'manuscript_upload'),
     # path('book/<int:pk>/',views.delete_upload,name='delete_upload'),
+    path('dockupload',views.dockuploadview,name='dockupload'),
+    path('manuscriptpdf',views.manuscriptpdf,name='manuscriptpdf'),
+    path('pdfprint',views.pdfprint,name='pdfprint'),
 
 
     #######--------Home Of Users views---------{{{{]]]]]]]]]{{{{]=======++________-----==}}}}}}}}

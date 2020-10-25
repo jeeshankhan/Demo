@@ -1,0 +1,51 @@
+{% extends 'index2.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+  div.inputinfo{
+ 
+  width: 50%; 
+  padding-left: 80px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  }
+  div input{
+margin: 10px;
+width: 400px;
+height: 50px;
+border-radius: 10px;
+  }
+</style>
+
+<div class="inputinfo" style="margin-left: 0px;" >
+    <a class="btn btn-primary btn-sm"  href="{% url 'pdfprint' %}">print info for proof   plz.....</a>
+
+</div>
+
+
+<!-- 
+
+<div id="Paris" class="tabcontent">
+  <div>
+    <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+      <table>
+        <thead>
+          <th>Choice</th>
+          <th>Type</th>
+          <th>Description</th>
+        </thead>
+        {% for manuscript_detail in manuscript_details %}
+        <tbody>
+          <tr>
+            <td>{{ manuscript_detail.title }} </td>
+            <td> {{ manuscript_detail.type }}</td>
+            <td><a href="{{ manuscript_detail.cover_letter.mug_shot.url }}" class="btn btn-primary btn-sm" target="_blank">Download</a></td>
+          </tr>
+          {% endfor %}>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div> -->
+{% endblock content %}
