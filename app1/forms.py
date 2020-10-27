@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,authenticate
 from  .models import Account,upload,manuscript_detail,manuscript_info,manuscript_attached_reviewer,manuscript_attached_editor,manuscript_attached_author,file_upload,manuscript_upload
-from .models import dockupload
+from .models import dockupload,reviewer_comment
 from django.db import models
 from django.forms import ModelForm
 from datetime import date,time
@@ -111,6 +111,12 @@ class dockuploadform(forms.ModelForm):
     class Meta:
         model = dockupload
         fields = ('your_email','ubload_file')
+
+class reviewer_comment_form(forms.ModelForm):
+   
+    class Meta:
+        model = reviewer_comment
+        fields = ('manuscript_key','email','file_upload')
 
     
 

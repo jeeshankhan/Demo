@@ -214,8 +214,17 @@ class dockupload(models.Model):
     manuscript_key = models.CharField(max_length=300,default=key,blank=True,null=True)
     your_email = models.EmailField(max_length=254)
     ubload_file =models.FileField(upload_to='dock/article')
+    
     def __str__(self):
         return self.manuscript_key
+    def delete(self, *args, **kwargs):
+        self.ubload_file.delete()
+        super().delete(*args, **kwargs)
+class reviewer_comment(models.Model):
+    manuscript_key = models.CharField(max_length=300,null=True,blank=True)
+    email = models.EmailField(max_length=254,null=True,blank=True)
+    file_upload  = models.FileField(upload_to='artical/review')
+    
 
 
 

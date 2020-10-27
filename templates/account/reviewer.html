@@ -1,5 +1,5 @@
 {% extends 'index2.html'%}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
   <h2>Books</h2>
@@ -8,17 +8,39 @@
 <th>manuscript key</th>
 <th>User Email</th>
 <th>File</th>
+<th>Delete</th>
+
 
 </thead>
-{% for f in pdfs %}
+{% for   f in  pdfs %}
 <tbody>
   <tr>
     <td>{{ f.manuscript_key }} </td>
     <td> {{ f.your_email }}</td>
     <td><a href="{{ f.ubload_file.url }}" class="btn btn-primary btn-sm" target="_blank">Download</a></td>
+    <td>
+
+        <form  method="POST" action="{% url 'delete_upload' f.pk %}">
+        {% csrf_token %}
+        <button type="submit" style="background-color: darkred;" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+    </td>
+
   </tr>
 
   {% endfor %}>
 </tbody>
   </table> 
+<div style=" margin-left:30%; width:40%; padding:3%">
+  <h4>Upload After  Review</h4>
+   <form  method="POST" enctype="multipart/form-data" > {% csrf_token %}
+   
+    {{form|crispy}}
+
+<p> {{message}}</p>
+    <button type="submit" class="btn btn-primary btn-sm">upload</button>
+
+    </form>
+</div>
+ 
 {% endblock content %}

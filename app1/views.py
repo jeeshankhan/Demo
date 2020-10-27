@@ -6,11 +6,11 @@ from django.contrib.auth import login ,authenticate,logout
 from .forms import RegistrationForm ,AccountAuthenticationForm,example,upload_form,upload_form1,manuscript_detail_form,manuscript_upload_form
 from .forms import file_upload_form,manuscript_attached_author_form,manuscript_attached_editor_form,manuscript_attached_reviewer_form,manuscript_info_form
 from django.core.files.storage import FileSystemStorage
-from .forms import dockuploadform
+from .forms import dockuploadform,reviewer_comment_form
 from .forms import UserCreationForm
 from django.conf import settings
 from django.conf.urls.static import static
-from .models import upload,manuscript_detail,dockupload
+from .models import upload,manuscript_detail,dockupload,reviewer_comment
 import datetime
 import os
 import io
@@ -356,11 +356,11 @@ def pdfprint(request):
 
 
 # ################# pdf file deletion def --------------{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}
-# def delete_upload(request,pk):
-#     if request.method =='POST':
-#         book  = upload.objects.get(pk=pk) 
-#         book.delete()
-#     return redirect('step2')
+def delete_upload(request,pk):
+    if request.method =='POST':
+        pdfs  = dockupload.objects.get(pk=pk) 
+        pdfs.delete()
+    return redirect('dockupload')
 
 
 
@@ -385,7 +385,9 @@ def home(request):
     return render(request,'manuscriptpages/home.html')
 
 def author(request):
-    return render(request,'account/author.html')
+
+    comment = reviewer_comment.objects.all()
+    return render(request,'account/author.html',{'comment':comment})
 
 def editor(request):
     return render(request,'account/editor.html')
@@ -395,6 +397,15 @@ def publisher(request):
 
 def reviewer(request):
     pdfs = dockupload.objects.all()
+    if request.method =='POST':
+        
+        form = reviewer_comment_form(request.POST,request.FILES)
+        if form.is_valid():
 
-    return render(request,'account/reviewer.html',{'pdfs':pdfs})
+            form.save()
+            return HttpResponseRedirect('home')
+    else:
+        form = reviewer_comment_form()
+    return render(request,'account/reviewer.html',{'pdfs':pdfs,'form':form})
+
 

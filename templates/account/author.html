@@ -65,8 +65,40 @@ body {font-family: "Lato", sans-serif;}
 </div>
 
 <div id="London" class="tabcontent">
-  <h1>Start New Submission</h1>
+  <h3>Start New Submission</h1>
   <p><a href="{% url 'dockupload' %}">Click Here</a></p>
+
+<h1>your review files here</h1>
+
+
+<table>
+  <thead>
+  <th>manuscript key</th>
+  <th>File</th>
+  <th>Delete</th>
+  
+  
+  </thead>
+  {% for   f in  comment %}
+  <tbody>
+    <tr>
+      <td>{{ f.manuscript_key }} </td>
+  
+      <td><a href="{{ f.file_upload.url }}" class="btn btn-primary btn-sm" target="_blank">Download</a></td>
+      <td>
+  
+          <form  method="POST" action="{% url 'delete_upload' f.pk %}">
+          {% csrf_token %}
+          <button type="submit" style="background-color: darkred;" class="btn btn-danger btn-sm">Delete</button>
+          </form>
+      </td>
+  
+    </tr>
+  
+    {% endfor %}>
+  </tbody>
+    </table> 
+
 </div>
 
 <div id="Paris" class="tabcontent">
