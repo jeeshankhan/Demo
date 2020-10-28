@@ -4,64 +4,69 @@
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head>
 <title> board</title>
+<style>
+#po{
 
+  float: left;
+  width: 24%;
+}
+
+</style>
 </head>
 <body>
-
-  <div class="wrapper row3">
-    <section class="hoc container clear"> 
-     
-      <div class="sectiontitle">
-        <h6 class="heading">Et ipsum suscipit sit amet</h6>
-        <p>Molestie dolor blandit mauris porta quam erat ut laoreet velit</p>
-      </div>
-      <ul class="nospace group latest">
-        <li class="one_third first">
-          <article>
-            <time datetime="2045-04-06T08:15+00:00"><i class="far fa-calendar-alt rgtspace-5"></i> 06<sup>th</sup> April 2045 @ 15:00pm</time>
-            <div class="excerpt">
-              <h6 class="heading">ac finibus purus pulvinar quis suspendisse varius</h6>
-              <p>condimentum sem ac euismod tortor semper sit amet fusce pretium justo nec faucibus finibus libero odio porttitor magna et semper mi velit maximus nisi nullam accumsan massa [<a href="#">&hellip;</a>]</p>
-              <ul class="meta">
-                <li><i class="fas fa-user rgtspace-5"></i> <a href="#">Admin</a></li>
-                <li><i class="fas fa-tags rgtspace-5"></i> <a href="#">Tag 1</a>, <a href="#">Tag 2</a></li>
-              </ul>
-              <footer><a class="btn" href="#">Read More</a></footer>
-            </div>
-          </article>
-        </li>
-        <li class="one_third">
-          <article>
-            <time datetime="2045-04-05T08:14+00:00"><i class="far fa-calendar-alt rgtspace-5"></i> 05<sup>th</sup> April 2045 @ 14:00pm</time>
-            <div class="excerpt">
-              <h6 class="heading">dapibus nulla a tristique risus vivamus ut metus</h6>
-              <p>turpis integer ac neque ac risus malesuada tincidunt vestibulum rutrum luctus lobortis ut tincidunt nulla at luctus aliquet mi magna sagittis sem id dapibus dui ex at augue etiam [<a href="#">&hellip;</a>]</p>
-              <ul class="meta">
-                <li><i class="fas fa-user rgtspace-5"></i> <a href="#">Admin</a></li>
-                <li><i class="fas fa-tags rgtspace-5"></i> <a href="#">Tag 1</a>, <a href="#">Tag 2</a></li>
-              </ul>
-              <footer><a class="btn" href="#">Read More</a></footer>
-            </div>
-          </article>
-        </li>
-        <li class="one_third">
-          <article>
-            <time datetime="2045-04-04T08:13+00:00"><i class="far fa-calendar-alt rgtspace-5"></i> 04<sup>th</sup> April 2045 @ 13:00pm</time>
-            <div class="excerpt">
-              <h6 class="heading">lacinia et mauris sit amet bibendum vulputate sem</h6>
-              <p>duis vulputate at massa et sollicitudin erat eget suspendisse dignissim ultrices hendrerit donec aliquam risus a porta fermentum donec a mi pulvinar ex auctor eleifend eu finibus [<a href="#">&hellip;</a>]</p>
-              <ul class="meta">
-                <li><i class="fas fa-user rgtspace-5"></i> <a href="#">Admin</a></li>
-                <li><i class="fas fa-tags rgtspace-5"></i> <a href="#">Tag 1</a>, <a href="#">Tag 2</a></li>
-              </ul>
-              <footer><a class="btn" href="#">Read More</a></footer>
-            </div>
-          </article>
-        </li>
-      </ul>
+  <div >
+    <marquee direction="right" width="100%"   ><h6>info news:</h6> </marquee>
+  
+  
+  </div>
+      <div style="margin-top:8%; margin-left:40%">
+        <h6 >Editorial Board Members<h3>
+    
+      </div>        
    
-    </section>
-  </div> 
+<div  class="wrapper row3">
+
+  <main class="hoc container clear"> 
+  
+    
+    <section  id="introblocks">
+
+
+      <ul class="nospace group">
+       
+        {% for info in infos %}
+        
+        {% if info.is_editor %}
+        <li  class="one_third">
+          <article><a href="#"><i class="fas fa-cube"></i></a>
+            <h6 class="heading"><b>Name: </b> {{info.First_Name}}  {{Middle_Name}} {{info.Last_Name}}</h6>
+            <p><b>Email: </b>{{info.email}}</p>
+            <p><b>Institution:</b>{{info.Institution}}</p>
+            <p><b>Country:</b>{{info.Country}}</p>
+            <p><b>Areas of Specialization:</b><hr>{{info.Areas_of_Specialization}}</p>
+            
+          </article>
+        </li>
+
+        {%  endif %}
+        {% endfor %}
+        
+            
+
+      </ul>
+
+
+
+
+    </section> 
+
+
+
+
+    </main>
+</div>
+
+
 
 
 </body>

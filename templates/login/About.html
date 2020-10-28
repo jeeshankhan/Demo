@@ -1,6 +1,39 @@
 {% extends 'index.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+<body>
+
+{% for info in infos %}
+<div style="margin-left: 5%; margin-top:5%; border:1px dotted yellow;">
+<h2> {{info.heading}}. </h2>
+<h6>{{info.sub_heading}} </h6>
+<p> {{info.paragraf}}</p>
+ </div>
+ {% endfor %}
+
+
+
+    <div style="margin-left: 10%; margin-top:5%; margin-right:10%; border:4px dotted seagreen; border-radius:5%; padding:10%;">
+
+    <strong>Enter Information About Your Website</strong>
+    <hr>
+        <form method="POST" >
+            {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary btn-sm">Add Information</button>
+        </form>
+        
+        </div>
+</body>
+</html>
 {% endblock %}

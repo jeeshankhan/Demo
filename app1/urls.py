@@ -15,11 +15,11 @@ urlpatterns = [
 
 #####3--------Account----------------[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
     #path('index',views.index,name='index'),
-    path('about',views.about,name='about'),
+    path('about',views.about_view,name='about'),
     path('regs',views.registration_view,name='regs'),
     path('login',views.login_view,name='login'),
     path('logout',views.logout_view,name='logout'),
-    path('contact',views.contact,name='contact'),
+    path('contact',views.contact_view,name='contact'),
 
 
 #######-----------Main Menu---------]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -57,6 +57,7 @@ urlpatterns = [
     path('editor',views.editor,name='editor'),
     path('publisher',views.publisher,name='publisher'),
     path('reviewer',views.reviewer,name='reviewer'),
+    # path('index',views.subscribe_view,'home1')
 
 
 ]

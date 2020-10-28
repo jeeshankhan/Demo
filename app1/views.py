@@ -6,11 +6,11 @@ from django.contrib.auth import login ,authenticate,logout
 from .forms import RegistrationForm ,AccountAuthenticationForm,example,upload_form,upload_form1,manuscript_detail_form,manuscript_upload_form
 from .forms import file_upload_form,manuscript_attached_author_form,manuscript_attached_editor_form,manuscript_attached_reviewer_form,manuscript_info_form
 from django.core.files.storage import FileSystemStorage
-from .forms import dockuploadform,reviewer_comment_form
+from .forms import dockuploadform,reviewer_comment_form,subscribe_form,about_form,contact_form
 from .forms import UserCreationForm
 from django.conf import settings
 from django.conf.urls.static import static
-from .models import upload,manuscript_detail,dockupload,reviewer_comment
+from .models import upload,manuscript_detail,dockupload,reviewer_comment,Account,about
 import datetime
 import os
 import io
@@ -38,7 +38,8 @@ def archives(request):
 def authorGuidelines(request):
     return render(request,'pages/Author_Guidelines.html')
 def editorialboard(request):
-    return render(request,'pages/Editorial_Board.html')
+    infos = Account.objects.all()
+    return render(request,'pages/Editorial_Board.html',{'infos':infos})
 def help(request):
     return render(request,'pages/help.html') 
 def currentIssue(request):
@@ -46,11 +47,36 @@ def currentIssue(request):
 
 
 #################---------login views----------{{{{{}}}}}}}{{{{{{{{{{[[[[[[[]]]]]]]}}}}}}}}}}
-def about(request):
-    
-    return render(request,'login/About.html') 
-def contact(request):
-    return render(request,'pages/home1.html')
+def about_view(request):
+    infos  = about.objects.all()
+    if request.method == 'POST':
+       
+        form = about_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('about')
+    else:
+        form = about_form()
+
+    return render(request,'login/About.html',{'form':form,'infos':infos}) 
+
+def contact_view(request):
+    context ={}
+    if request.method == 'POST':
+       
+        form = contact_form(request.POST)
+        if form.is_valid():
+            form.save()
+            context['ack'] = " successesfull message send to journal admin"
+            return HttpResponseRedirect('home1')
+    else:
+        form = contact_form()
+
+    return render(request,'login/contact.html',{'form':form})
+
+
+
+
 def registration_view(request):
     context ={}
     if request.POST:
@@ -382,7 +408,12 @@ def delete_upload(request,pk):
 
 #######--------Home Of Users views---------{{{{]]]]]]]]]{{{{]=======++________-----==}}}}}}}}
 def home(request):
-    return render(request,'manuscriptpages/home.html')
+    context={}
+    if request.user.is_authenticated:
+        return render(request,'manuscriptpages/home.html')
+    else:
+        context['pmsg']=" ......Please  LogIn First For Submission of Manuscript "
+    return render(request,'manuscriptpages/home.html',context)
 
 def author(request):
 
@@ -408,4 +439,12 @@ def reviewer(request):
         form = reviewer_comment_form()
     return render(request,'account/reviewer.html',{'pdfs':pdfs,'form':form})
 
-
+# def subscribe_view(request):
+#     if request.method == 'POST':
+#         form = subscribe_form(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('home1')
+#     else:
+#         form= subscribe_form()
+#     return render(request,'pages/home1.html',{'form':form})

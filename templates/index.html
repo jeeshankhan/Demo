@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
@@ -59,9 +60,9 @@
         <li><a href="{% url 'contact' %}">Contact</a></li>
 
         {% if request.user.is_authenticated %}
-        <li> Hellow, {{request.user.username}}</li>
+        
         <li><a href="{% url 'logout' %}">Logout</a></li>
-
+        <li> <h1>Welcome, {{request.user.username}}</h1></li>
         {% else %}
         
         <li><a href="{% url 'login' %}">Login</a></li>
@@ -155,57 +156,50 @@ height: 100%;
   <footer id="footer" class="hoc clear">
 
     <div class="one_quarter first">
-      <h6 class="heading">Nulla ullamcorper</h6>
+      <h6 class="heading">Address -- ::::::::::</h6>
+      <hr><hr>
       <ul class="nospace btmspace-30 linklist contact">
         <li><i class="fas fa-map-marker-alt"></i>
           <address>
-            Street Name &amp; Number, Town, Postcode/Zip
+            Room No- 301,Al-Shaahid Apartment   &amp; Number, Iqra colony, Aligarh UP India, 202002
           </address>
         </li>
-        <li><i class="fas fa-phone"></i> +00 (123) 456 7890</li>
-        <li><i class="far fa-envelope"></i> info@domain.com</li>
-      </ul>
-      <ul class="faico clear">
-        <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
-        <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-        <li><a class="faicon-dribble" href="#"><i class="fab fa-dribbble"></i></a></li>
-        <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
-      </ul>
+        <li><i class="fas fa-phone"></i> +91 9761611918</li>
+        <li><i class="far fa-envelope"></i> zeeshancrb@gmail.com</li>
     </div>
+  
     <div class="one_quarter">
-      <h6 class="heading">index one</h6>
+      <h6 class="heading">Email Contacts -::::</h6>
+      <hr><hr>
       <ul class="nospace linklist">
-        <li><a href="#">link one</a></li>
-        <li><a href="#">link two</a></li>
-        <li><a href="#">link three</a></li>
+        <li>imrannano@gmail.com</li>
+        <li>anishkhan@gmail.com</li>
+        <li>mainbranch@gmail.com</li>
         
       </ul>
     </div>
-    <div class="one_quarter">
-      <h6 class="heading">index one</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">link one</a></li>
-        <li><a href="#">link two</a></li>
-        <li><a href="#">link three</a></li>
-        
-      </ul>
-    </div>
-    <h6 class="heading">index one</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">link one</a></li>
-        <li><a href="#">link two</a></li>
-        <li><a href="#">link three</a></li>
-        
-      </ul>
       
-      <form method="post" action="#">
-        <fieldset>
-          <legend>Newsletter:</legend>
-          <input class="btmspace-15" type="text" value="" placeholder="Name">
-          <input class="btmspace-15" type="text" value="" placeholder="Email">
-          <button type="submit" value="submit">Submit</button>
-        </fieldset>
-      </form>
+    <div class="one_quarter">
+      <h6 class="heading">Follow Us On Social media For More Info</h6>
+      <ul class="nospace linklist">
+         <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i>          Facebook</a></li>
+    <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i>                 Twitter</a></li>
+    <li><a class="faicon-dribble" href="#"><i class="fab fa-youtube"></i></a>              Youtube</li>
+    <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a>            LinkedIn</li>
+      </ul>
+    </div>
+
+    <div class="one_quarter">
+      <h6 class="heading">Follow Us On Social media For More Info</h6>
+      <ul type="disk" class="nospace linklist">
+         <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i>          Facebook</a></li>
+    <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i>                 Twitter</a></li>
+    <li><a class="faicon-dribble" href="#"><i class="fab fa-youtube"></i></a>              Youtube</li>
+    <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a>            LinkedIn</li>
+      </ul>
+    </div>
+
+
     </div>
   </footer>
 </div>
@@ -217,9 +211,7 @@ height: 100%;
 <div class="wrapper row5">
   <div id="copyright" class="hoc clear">
     
-    <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
-        title="Free Website Templates">OS Templates</a></p>
+    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">Domain Name</a></p>
   </div>
 </div>
 

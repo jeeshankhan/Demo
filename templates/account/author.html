@@ -60,15 +60,29 @@ body {font-family: "Lato", sans-serif;}
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Start New Submission</button>
   <button class="tablinks" onclick="openCity(event, 'Paris')">Five Most Recent Email</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Other Thinks</button>
-  <button class="tablinks" onclick="openCity(event, 'London1')">Other Thinks</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">old Submission</button>
+  <button class="tablinks" onclick="openCity(event, 'London1')">News For You From Journal</button>
 </div>
 
 <div id="London" class="tabcontent">
   <h3>Start New Submission</h1>
-  <p><a href="{% url 'dockupload' %}">Click Here</a></p>
+  <p><a class="btn btn-primary btn-sm" href="{% url 'dockupload' %}">Click Here</a></p>
 
-<h1>your review files here</h1>
+</div>
+
+<div id="Paris" class="tabcontent">
+ <h2><em>Email</em></h2>
+
+   <ul>
+<li></li>
+<li></li>
+
+ </ul>
+
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h1>your review files here</h1>
 
 
 <table>
@@ -99,16 +113,6 @@ body {font-family: "Lato", sans-serif;}
   </tbody>
     </table> 
 
-</div>
-
-<div id="Paris" class="tabcontent">
-  <h2>Email</h2>
-  <p>.................</p> 
-</div>
-
-<div id="Tokyo" class="tabcontent">
-  <h3>Other thinks </h3>
-  <p>Continue..........Update soon</p>
 </div>
 
 <div id="London1" class="tabcontent">

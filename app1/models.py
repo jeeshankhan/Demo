@@ -225,7 +225,19 @@ class reviewer_comment(models.Model):
     email = models.EmailField(max_length=254,null=True,blank=True)
     file_upload  = models.FileField(upload_to='artical/review')
     
+class subscribe(models.Model):
+    email = models.EmailField(max_length=254,null=True,blank=True) 
+    message = models.TextField(max_length=500,null=True,blank=True)
+    def __str__(self):
+        return self.email
+class about(models.Model):
+    heading=models.CharField(max_length=100,blank=True,null=True)
+    sub_heading = models.CharField(max_length=100,blank=True,null=True)
+    paragraf = models.TextField(max_length=1000,blank=True,null=True)
 
-
-
-
+class contact(models.Model):
+    message_date = models.DateField(default=datetime.datetime.now())
+    email = models.EmailField(max_length=254)
+    message = models.TextField(max_length=500)
+    def __str__(self):
+        return self.message_date

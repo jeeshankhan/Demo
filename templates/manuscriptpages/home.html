@@ -76,11 +76,11 @@
   </style>
   
 
-  ​
+  ​{% if request.user.is_authenticated %}
   <div class="sidenav">
     <h6 style="color: whitesmoke;">Update Your Details</h6>
     <u>
-    <li><a href="{% url 'step1' %}">E-mail/Name</a></li>
+    <li><a href="#">E-mail/Name</a></li>
 <li><a href="#services">Address</a></li>
     <li><a href="#clients">User Id/Password</a></li>
   </u>
@@ -89,4 +89,11 @@
 <h3>Here Your Home User &Because; click above header to use your granted permission. </h3>
 
   </div>
+{% else %}
+<div style="margin:5%;">
+  <h1 style="color:red;" >{{pmsg}}</h1>
+<li><a href="{% url 'home1' %}"><h3>Go To Home</h3> </a></li>
+</div>
+
+  {% endif %}
 {% endblock content %}

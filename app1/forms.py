@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,authenticate
 from  .models import Account,upload,manuscript_detail,manuscript_info,manuscript_attached_reviewer,manuscript_attached_editor,manuscript_attached_author,file_upload,manuscript_upload
-from .models import dockupload,reviewer_comment
+from .models import dockupload,reviewer_comment,subscribe,about,contact
 from django.db import models
 from django.forms import ModelForm
 from datetime import date,time
@@ -13,7 +13,7 @@ class RegistrationForm(UserCreationForm):
         fields = ("First_Name","Middle_Name","Last_Name","email","username","password1","password2",
         "Primary_Phone","Secondary_Email","Degree","Department",
         "Institution","Areas_of_Specialization","Zip_Postal_Code","Street_Address",
-        "City","State_Province","Country","User_Type",)
+        "City","State_Province","Country","is_reviewer","is_editor","is_publisher")
 class AccountAuthenticationForm(forms.ModelForm):
     password= forms.CharField(label='Password',widget=forms.PasswordInput)
     class Meta:
@@ -120,3 +120,15 @@ class reviewer_comment_form(forms.ModelForm):
 
     
 
+class subscribe_form(forms.ModelForm):
+    class Meta:
+        model = subscribe
+        fields = ('email','message')
+class about_form(forms.ModelForm):
+    class Meta:
+        model = about
+        fields = ('heading','sub_heading','paragraf')
+class contact_form(forms.ModelForm):
+    class Meta:
+        model = contact
+        fields = ('email','message')
